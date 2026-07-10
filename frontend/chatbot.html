@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Health AI Assistant</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/chatbot.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-circle">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <h2>Star Health</h2>
+                <span>Internal AI Assistant</span>
+            </div>
+
+        </div>
+
+        <button class="menu-btn" onclick="clearChat()">
+            <i class="fa-solid fa-plus"></i>
+            New Chat
+        </button>
+
+        <button class="menu-btn">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            History
+        </button>
+
+        <button class="menu-btn">
+            <i class="fa-solid fa-file-lines"></i>
+            Policies
+        </button>
+
+        <div class="bottom-menu">
+
+            <button class="menu-btn logout" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+        <!-- Header -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>⭐ Star Health AI Assistant</h1>
+
+                <p>
+                    Ask anything about policies, claims, premiums and benefits.
+                </p>
+
+            </div>
+
+            <div class="status">
+
+                <span class="online"></span>
+
+                AI Online
+
+            </div>
+
+        </header>
+
+        <!-- Chat -->
+
+        <section id="chatBox" class="chat-box">
+
+            <div class="bot-message">
+
+                <div class="avatar bot">
+
+                    🤖
+
+                </div>
+
+                <div class="message">
+
+                    <h3>Welcome 👋</h3>
+
+                    <p>
+
+                        I'm your Star Health AI Assistant.
+
+                    </p>
+
+                    <p>
+
+                        Ask me anything related to insurance policies,
+                        premium, waiting periods, maternity,
+                        claims or coverage.
+
+                    </p>
+
+                    <small>
+                        Ready to assist...
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Typing -->
+
+        <div id="typing" class="typing" style="display:none;">
+
+            <div class="avatar bot">
+
+                🤖
+
+            </div>
+
+            <div class="typing-box">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+        <!-- Input -->
+
+        <footer class="chat-input">
+
+            <input
+                id="question"
+                type="text"
+                placeholder="Ask a question about Star Health policies..."
+                autocomplete="off">
+
+            <button onclick="sendMessage()">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </footer>
+
+        <!-- Footer -->
+
+        <div class="footer">
+
+            Powered by
+            <strong>FastAPI</strong> •
+            <strong>Ollama</strong> •
+            <strong>Llama 3</strong> •
+            <strong>FAISS</strong>
+
+        </div>
+
+    </main>
+
+    <script src="js/chatbot.js"></script>
+
+</body>
+
+</html>
