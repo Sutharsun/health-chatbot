@@ -1,36 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Star Health AI Assistant</title>
 
     <link rel="stylesheet" href="css/login.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
 
-<div class="container">
+    <!-- Background Animation -->
 
-    <div class="login-box">
+    <div class="circle one"></div>
 
-        <h1>⭐ Star Health</h1>
+    <div class="circle two"></div>
 
-        <h3>Internal AI Assistant</h3>
+    <div class="circle three"></div>
 
-        <input type="text" id="username" placeholder="Username">
+    <!-- Login Card -->
 
-        <input type="password" id="password" placeholder="Password">
+    <div class="container">
 
-        <button onclick="login()">Login</button>
+        <div class="login-box">
 
-        <p id="msg"></p>
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <div class="logo-circle">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+            </div>
+
+            <h1>Star Health</h1>
+
+            <h3>AI Assistant</h3>
+
+            <p class="subtitle">
+
+                Secure Internal Knowledge Assistant
+
+            </p>
+
+            <!-- Username -->
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-user"></i>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Employee ID / Username">
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password">
+
+                <span id="togglePassword">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </span>
+
+            </div>
+
+            <!-- Options -->
+
+            <div class="options">
+
+                <label>
+
+                    <input type="checkbox">
+
+                    Remember Me
+
+                </label>
+
+                <a href="#">Forgot Password?</a>
+
+            </div>
+
+            <!-- Login -->
+
+            <button class="login-btn" onclick="login()">
+
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+                Login
+
+            </button>
+
+            <!-- Error -->
+
+            <p id="msg"></p>
+
+            <!-- Divider -->
+
+            <div class="divider">
+
+                <span>Enterprise AI Platform</span>
+
+            </div>
+
+            <!-- Features -->
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    <span>100+ Policy PDFs</span>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <span>Llama 3 AI</span>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>Secure Access</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="info-panel">
+
+            <div class="glass">
+
+                <h2>
+
+                    Welcome 👋
+
+                </h2>
+
+                <p>
+
+                    Ask policy questions instantly using AI.
+
+                </p>
+
+                <br>
+
+                <ul>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Policy Information
+
+                    </li>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Claim Rules
+
+                    </li>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Premium Details
+
+                    </li>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Coverage Benefits
+
+                    </li>
+
+                    <li>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Instant AI Answers
+
+                    </li>
+
+                </ul>
+
+                <div class="ai-card">
+
+                    <div class="ai-icon">
+
+                        🤖
+
+                    </div>
+
+                    <div>
+
+                        <h4>AI Status</h4>
+
+                        <span>
+
+                            <span class="dot"></span>
+
+                            Online
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
-
-<script src="js/login.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
+
 </html>

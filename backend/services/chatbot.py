@@ -1,23 +1,51 @@
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq
 
 from services.rag import db
 from services.prompt import SYSTEM_PROMPT
-from config import OLLAMA_MODEL
 
-llm = ChatOllama(model=OLLAMA_MODEL)
+from config import GROQ_API_KEY, GROQ_MODEL
+
+
+llm = ChatGroq(
+    api_key=GROQ_API_KEY,
+    model_name=GROQ_MODEL,
+    temperature=0.2
+)
+
 
 def ask_question(question: str):
-    docs = db.similarity_search(question, k=4)
 
-    context = "\n\n".join(doc.page_content for doc in docs)
+    retriever = db.as_retriever(
+        search_type="mmr",
+        search_kwargs={
+            "k":10,
+            "fetch_k":30
+        }
+    )
+
+    docs = retriever.invoke(question)
+
+    context = "\n\n".join(
+        doc.page_content for doc in docs
+    )
 
     prompt = f"""
 {SYSTEM_PROMPT}
 
-Context:
+You are an expert Star Health Insurance Assistant.
+
+Answer ONLY using the context.
+
+If the answer is not present, say:
+
+'I couldn't find this information in the available Star Health documents.'
+
+Context
+--------
 {context}
 
-Question:
+Question
+--------
 {question}
 
 Professional Answer:
