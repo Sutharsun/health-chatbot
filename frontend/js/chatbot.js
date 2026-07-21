@@ -1,12 +1,11 @@
-const API_URL = "http://127.0.0.1:8000/chat";
-
+const API_URL = "https://health-chatbot-aepv.onrender.com/chat";
 const chatBox = document.getElementById("chatBox");
 const questionInput = document.getElementById("question");
 const typing = document.getElementById("typing");
 
 // Send using Enter key
 questionInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter") {git add ../frontend/js/chatbot.js
         sendMessage();
     }
 });
