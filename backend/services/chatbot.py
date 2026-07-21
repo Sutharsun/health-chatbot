@@ -1,6 +1,6 @@
 from langchain_groq import ChatGroq
 
-from services.rag import db
+from services.rag import get_db
 from services.prompt import SYSTEM_PROMPT
 
 from config import GROQ_API_KEY, GROQ_MODEL
@@ -15,13 +15,15 @@ llm = ChatGroq(
 
 def ask_question(question: str):
 
+    db = get_db()
+
     retriever = db.as_retriever(
-        search_type="mmr",
-        search_kwargs={
-            "k":10,
-            "fetch_k":30
-        }
-    )
+    search_type="mmr",
+    search_kwargs={
+        "k": 10,
+        "fetch_k": 30
+    }
+)
 
     docs = retriever.invoke(question)
 

@@ -2,18 +2,25 @@ from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from config import EMBEDDING_MODEL, VECTOR_DB
 
-print("Step 1: Imports OK")
+embeddings = None
+db = None
 
-embeddings = HuggingFaceEmbeddings(
-    model_name=EMBEDDING_MODEL
-)
+def get_db():
+    global embeddings, db
 
-print("Step 2: Embeddings created")
+    if db is None:
+        print("Loading embeddings...")
+        embeddings = HuggingFaceEmbeddings(
+            model_name=EMBEDDING_MODEL
+        )
 
-db = FAISS.load_local(
-    VECTOR_DB,
-    embeddings,
-    allow_dangerous_deserialization=True
-)
+        print("Loading FAISS...")
+        db = FAISS.load_local(
+            VECTOR_DB,
+            embeddings,
+            allow_dangerous_deserialization=True
+        )
 
-print("Step 3: FAISS loaded")
+        print("FAISS loaded.")
+
+    return db
