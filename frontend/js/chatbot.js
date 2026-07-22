@@ -31,26 +31,88 @@ function scrollBottom() {
 }
 
 // User Message
-function addUserMessage(text) {
+// Bot Message
+function addBotMessage(text) {
 
     chatBox.innerHTML += `
+    <div class="bot-message">
 
-    <div class="user-message">
+        <div class="avatar bot">
+            🤖
+        </div>
 
         <div class="message">
-
-            ${text}
-
-            <br><br>
-
+            ${marked.parse(text)}
+            <br>
             <small>${currentTime()}</small>
-
         </div>
 
     </div>
-
     `;
 
     scrollBottom();
+}
+
+
+// Send Message
+async function sendMessage() {
+
+    const question = questionInput.value.trim();
+
+    if (!question) return;
+
+    addUserMessage(question);
+
+    questionInput.value = "";
+
+    typing.style.display = "flex";
+
+    try {
+
+        const response = await fetch(API_URL, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                question: question
+            })
+
+        });
+
+        const data = await response.json();
+
+        typing.style.display = "none";
+
+        addBotMessage(data.answer);
+
+    } catch (error) {
+
+        typing.style.display = "none";
+
+        addBotMessage("❌ Unable to connect to the server.");
+
+        console.error(error);
+
+    }
+
+}
+
+
+// Clear Chat
+function clearChat() {
+
+    location.reload();
+
+}
+
+
+// Logout
+function logout() {
+
+    alert("Logout clicked.");
 
 }
